@@ -1,22 +1,15 @@
 import Vue from 'vue'
+import './plugins'
+import http from './common/utils/http'
+import router from './router/index'
+import store from './store/index'
 import App from './App.vue'
-import VueRouter from "vue-router"
-import routerConfig from './router.config.js'
-
-
+Vue.prototype.axios = http
 
 Vue.config.productionTip = false
 
-Vue.use(VueRouter)
-
-const router = new VueRouter(routerConfig);
-
-
 new Vue({
-  el: "#app",
-  render: h => h(App),
-  router:router
-})
-
-
-
+  store,
+  router,
+  render: h => h(App)
+}).$mount('#app')
